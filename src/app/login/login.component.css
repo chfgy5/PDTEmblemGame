@@ -1,0 +1,14 @@
+form {
+  border-radius: 5em;
+}
+
+form input {
+  padding: 1em;
+  margin: 1em;
+}
+
+form input#submit {
+  width: 8em;
+  height: 4em;
+  border-radius: 1em;
+}

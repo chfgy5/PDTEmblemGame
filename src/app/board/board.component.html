@@ -1,0 +1,17 @@
+<div class="board">
+  <div class="cell" *ngFor="let value of CurrentBoard">
+    <div *ngIf="value == 0; else grass"></div>
+
+    <ng-template #grass>
+      <div *ngIf="value == 1; else boulder">
+        <img src="../images/grass.png" alt="rawr">
+      </div>
+    </ng-template>
+
+    <ng-template #boulder>
+      <div *ngIf="value == 2; else">
+        <img src="../images/boulder.png" alt="grr">
+    </div>
+    </ng-template>
+  </div>
+</div>
