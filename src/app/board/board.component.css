@@ -19,3 +19,8 @@
 .cell:nth-child(12n+12)  {
   background-color: #A0A0A0;
 }
+
+img {
+  height: 100%;
+  width: 100%;
+}
