@@ -2,7 +2,7 @@
   <app-character></app-character>
 </div>
 <div class="board">
-  <app-cell *ngFor="let terrain of CurrentBoard"></app-cell>
+  <app-cell *ngFor="let value of CurrentBoard" [terrain]="value"></app-cell>
 </div>
 <div class="player-bench" *ngFor="let character of characterTeam2">
   <app-character></app-character>

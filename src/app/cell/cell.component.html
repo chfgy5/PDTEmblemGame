@@ -1,5 +1,6 @@
 <div class="cell" droppable (onDrop)="onDropLog($event, this)">
-  <img src="../../assets/images/boulder.png" alt="rawr" *ngIf="value == 1; else grass">
+  <img src="../../assets/images/boulder.png" alt="rawr" *ngIf="terrain == 1; else grass">
+  <img src="../../assets/images/grass.png" alt="grr" #grass *ngIf="terrain == 2">
 
-  <img src="../../assets/images/grass.png" alt="grr" #grass *ngIf="value == 2">
+  <img src="../../assets/images/{{characterImg}}" alt="charcter">
 </div>

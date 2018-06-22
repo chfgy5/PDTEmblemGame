@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cell',
@@ -6,15 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cell.component.css']
 })
 export class CellComponent implements OnInit {
-  terrain: number;
+  @Input() terrain: number;
+  characterImg = 'empty.png';
 
   constructor() {  }
 
   ngOnInit() {
   }
 
-  onDropLog(event, item) {
-    console.dir(item);
+  onDropLog(event, cell) {
     console.dir(event);
+    console.dir(cell);
+
+    if (cell.terrain !== 1) {
+      console.log('move');
+      this.characterImg = cell.characterImg;
+    }
   }
 }

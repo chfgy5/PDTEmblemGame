@@ -10,7 +10,7 @@ import { BOARDS } from '../boards';
 })
 export class BoardComponent implements OnInit {
   characterTeam1 = [ 'Person' ];
-  characterTeam = [ 'Person' ];
+  characterTeam2 = [ 'Person', 'bob' ];
   CurrentBoard: number[];
 
   constructor(
