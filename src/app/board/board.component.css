@@ -1,3 +1,8 @@
+img {
+  height: 100%;
+  width: 100%;
+}
+
 .board {
   height: 100%;
 }
@@ -10,24 +15,4 @@
 .player-bench img {
   height: 100%;
   width: 10%;
-}
-
-.player-bench::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.cell:nth-child(12n+1),
-.cell:nth-child(12n+3),
-.cell:nth-child(12n+5),
-.cell:nth-child(12n+8),
-.cell:nth-child(12n+10),
-.cell:nth-child(12n+12)  {
-  background-color: #A0A0A0;
-}
-
-img {
-  height: 100%;
-  width: 100%;
 }

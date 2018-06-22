@@ -1,7 +1,9 @@
-<div class="player-bench">
-  <img src="../../assets/images/person.png" alt="Person.png" [draggable] [dragData]="this">
+<div class="player-bench" *ngFor="let character of characterTeam1">
+  <app-character></app-character>
 </div>
-<div class="board"></div>
-<div class="player-bench">
-  <img src="../../assets/images/person.png" alt="Person.png" [draggable] [dragData]="this">
+<div class="board">
+  <app-cell *ngFor="let terrain of CurrentBoard"></app-cell>
+</div>
+<div class="player-bench" *ngFor="let character of characterTeam2">
+  <app-character></app-character>
 </div>

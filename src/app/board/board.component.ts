@@ -9,7 +9,8 @@ import { BOARDS } from '../boards';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-
+  characterTeam1 = [ 'Person' ];
+  characterTeam = [ 'Person' ];
   CurrentBoard: number[];
 
   constructor(
@@ -20,14 +21,6 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  onDropLog(event) {
-    // if (event === 0 || event === 2) {
-      event.nativeEvent.toElement.innerHTML = `<img _ngcontent-c2 src="../../assets/images/person.png"
-        alt="Person.png" [draggable] [dragData]="this">`;
-    // }
-    console.dir(event);
   }
 
 }

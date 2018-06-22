@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cell.component.css']
 })
 export class CellComponent implements OnInit {
+  terrain: number;
 
-  constructor() { }
+  constructor() {  }
 
   ngOnInit() {
   }
 
+  onDropLog(event, item) {
+    console.dir(item);
+    console.dir(event);
+  }
 }

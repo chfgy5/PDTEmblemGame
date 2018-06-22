@@ -8,13 +8,15 @@ import { LoginComponent } from './login/login.component';
 import { BoardComponent } from './board/board.component';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { CellComponent } from './cell/cell.component';
+import { CharacterComponent } from './character/character.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     BoardComponent,
-    CellComponent
+    CellComponent,
+    CharacterComponent
   ],
   imports: [
     BrowserModule,
