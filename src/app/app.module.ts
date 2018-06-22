@@ -6,19 +6,21 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { BoardComponent } from './board/board.component';
-import { GameViewComponent } from './game-view/game-view.component';
+import { NgDragDropModule } from 'ng-drag-drop';
+import { CellComponent } from './cell/cell.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     BoardComponent,
-    GameViewComponent
+    CellComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgDragDropModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

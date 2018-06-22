@@ -1,0 +1,5 @@
+<div class="cell" *ngFor="let value of CurrentBoard" droppable (onDrop)="onDropLog($event)">
+  <img src="../../assets/images/boulder.png" alt="rawr" *ngIf="value == 1; else grass">
+
+  <img src="../../assets/images/grass.png" alt="grr" #grass *ngIf="value == 2">
+</div>

@@ -1,17 +1,7 @@
-<div class="board">
-  <div class="cell" *ngFor="let value of CurrentBoard">
-    <div *ngIf="value == 0; else grass"></div>
-
-    <ng-template #grass>
-      <div *ngIf="value == 1; else boulder">
-        <img src="../../assets/images/boulder.png" alt="rawr">
-      </div>
-    </ng-template>
-
-    <ng-template #boulder>
-      <div *ngIf="value == 2; else">
-        <img src="../../assets/images/grass.png" alt="grr">
-    </div>
-    </ng-template>
-  </div>
+<div class="player-bench">
+  <img src="../../assets/images/person.png" alt="Person.png" [draggable] [dragData]="this">
+</div>
+<div class="board"></div>
+<div class="player-bench">
+  <img src="../../assets/images/person.png" alt="Person.png" [draggable] [dragData]="this">
 </div>
