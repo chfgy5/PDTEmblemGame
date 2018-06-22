@@ -14,13 +14,12 @@ export class CellComponent implements OnInit {
   ngOnInit() {
   }
 
-  onDropLog(event, cell) {
+  moveToCell(event, cell) {
     console.dir(event);
     console.dir(cell);
 
     if (cell.terrain !== 1) {
-      console.log('move');
-      this.characterImg = cell.characterImg;
+      this.characterImg = event.dragData.characterImg;
     }
   }
 }

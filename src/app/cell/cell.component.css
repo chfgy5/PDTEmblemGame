@@ -20,3 +20,11 @@ img {
 .cell:nth-child(12n+12)  {
   background-color: #A0A0A0;
 }
+
+.cell img:nth-child(2n) {
+  z-index: 5;
+}
+
+.player-bench > img {
+  float: left;
+}
