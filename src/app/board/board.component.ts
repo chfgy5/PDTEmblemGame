@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { BOARDS } from '../boards';
+import { Character } from '../character';
 
 @Component({
   selector: 'app-board',
@@ -9,8 +10,8 @@ import { BOARDS } from '../boards';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-  characterTeam1 = [ 'Person' ];
-  characterTeam2 = [ 'Person', 'bob' ];
+  characterTeam1: Character[] = [ { id: 3, img: 'mighty.png' }, { id: 1, img: 'person.png' } ];
+  characterTeam2: Character[] = [ { id: 2, img: 'MrBravo.webp' } ];
   CurrentBoard: number[];
 
   constructor(
