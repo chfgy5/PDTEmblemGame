@@ -15,11 +15,9 @@ export class CellComponent implements OnInit {
   }
 
   moveToCell(event, cell) {
-    console.dir(event);
-    console.dir(cell);
-
-    if (cell.terrain !== 1) {
+    if (cell.terrain !== 1 && this.characterImg !== event.dragData.characterImg) {
       this.characterImg = event.dragData.characterImg;
+      event.dragData.characterImg = 'empty.png';
     }
   }
 }

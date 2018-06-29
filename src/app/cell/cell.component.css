@@ -1,9 +1,12 @@
 img {
+  position: absolute;
   height: 100%;
   width: 100%;
+  margin-left: -50%
 }
 
 .cell {
+  position: relative;
   width: 16%;
   height: 20%;
   margin: 0%;
@@ -21,10 +24,3 @@ img {
   background-color: #A0A0A0;
 }
 
-.cell img:nth-child(2n) {
-  z-index: 5;
-}
-
-.player-bench > img {
-  float: left;
-}

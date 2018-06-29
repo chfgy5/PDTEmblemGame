@@ -1,4 +1,4 @@
-<div class="cell" droppable onDragStart="getInitialObject($event)" (onDrop)="moveToCell($event, this)">
+<div class="cell" droppable draggable [dragData]="this" (onDrop)="moveToCell($event, this)">
   <img src="../../assets/images/boulder.png" alt="rawr" *ngIf="terrain == 1; else grass">
   <img src="../../assets/images/grass.png" alt="grr" #grass *ngIf="terrain == 2">
 
