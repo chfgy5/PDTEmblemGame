@@ -1,4 +1,4 @@
-<img *ngIf="character != null; else empty" src="../../assets/images/{{character.img}}" alt="Person.png" [draggable] [dragData]="character">
-<ng-template #empty>
-    <img src="../../assets/images/empty.png" alt="Person.png">
-</ng-template>
+<img src="../../assets/images/{{character.img}}" alt="Person.png" draggable [dragData]="character">
+<!-- <ng-template #empty>
+    <img src="../../assets/images/{{emptyCharacter.img}}" alt="Person.png">
+</ng-template> -->

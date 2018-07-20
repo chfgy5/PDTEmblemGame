@@ -18,6 +18,7 @@ export class BoardComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
+    const randomBoard = Math.floor(Math.random() * BOARDS.length);
     this.CurrentBoard = BOARDS[0];
   }
 

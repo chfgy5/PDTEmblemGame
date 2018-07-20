@@ -1,6 +1,6 @@
-<div class="cell" droppable draggable [dragData]="this" (onDrop)="moveToCell($event, this)">
-  <img src="../../assets/images/boulder.png" alt="rawr" *ngIf="terrain == 1; else grass">
-  <img src="../../assets/images/grass.png" alt="grr" #grass *ngIf="terrain == 2">
+<div class="cell" droppable (onDrop)="onMove($event, this)">
+  <img src="../../assets/images/boulder.png" alt="boulder" *ngIf="terrain == 1; else grass">
+  <img src="../../assets/images/grass.png" alt="grass" #grass *ngIf="terrain == 2">
 
   <app-character [character]="character"></app-character>
 </div>

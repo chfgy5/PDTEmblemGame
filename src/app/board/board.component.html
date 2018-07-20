@@ -1,9 +1,13 @@
 <div class="player-bench">
-  <app-character *ngFor="let character of characterTeam1" [character]="character"></app-character>
+  <div *ngFor="let character of characterTeam1">
+    <app-character [character]="character"></app-character>
+  </div>
 </div>
 <div class="board">
   <app-cell *ngFor="let value of CurrentBoard" [terrain]="value"></app-cell>
 </div>
 <div class="player-bench">
-  <app-character *ngFor="let character of characterTeam2" [character]="character"></app-character>
+  <div *ngFor="let character of characterTeam2">
+    <app-character [character]="character"></app-character>
+  </div>
 </div>
