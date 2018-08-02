@@ -1,0 +1,13 @@
+.board {
+  height: 100%;
+}
+
+.player-bench {
+  height: 15%;
+  width: 100%;
+  display: flex;
+}
+
+.player-bench > div {
+  width: 15%;
+}

@@ -1,0 +1,13 @@
+<div class="player-bench">
+  <div *ngFor="let character of characterTeam1">
+    <app-character (showStarting)="showStartingLocations($event)" [character]="character"></app-character>
+  </div>
+</div>
+<div class="board">
+  <app-cell *ngFor="let value of CurrentBoard;let i = index" [terrain]="value" [location]="i"></app-cell>
+</div>
+<div class="player-bench">
+  <div *ngFor="let character of characterTeam2">
+    <app-character (showStarting)="showStartingLocations($event)" [character]="character"></app-character>
+  </div>
+</div>
