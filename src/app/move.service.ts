@@ -1,37 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
+import { Actions } from './actions';
+
 @Injectable({
   providedIn: 'root'
 })
 export class MoveService {
-  readonly moveKey = 'move';
-  readonly attackKey = 'attack';
 
-  private dragAnnouncedSource = new Subject<{ [i: number]: string }>();
+  private dragAnnouncedSource = new Subject<number[]>();
   private dropAnnouncedSource = new Subject();
 
   dragAnnounced$ = this.dragAnnouncedSource.asObservable();
   dropAnnounced$ = this.dropAnnouncedSource.asObservable();
 
   sendLocation(location: number) {
-    const moveList: { [i: number]: string } = {};
+    const moveList: number[] = [];
 
     if (location === -1) {
       for (let i = 0; i < 6; i++) {
-        moveList[i] = this.moveKey;
+        moveList[i] = Actions.move;
       }
     } else {
-        moveList[location] = this.moveKey;
-        moveList[location - 1] = this.moveKey;
-        moveList[location + 1] = this.moveKey;
-        moveList[location - 6] = this.moveKey;
-        moveList[location + 6] = this.moveKey;
+        moveList[location] = Actions.move;
+        moveList[location + 1] = Actions.move;
+        moveList[location - 1] = Actions.move;
+        moveList[location + 6] = Actions.move;
+        moveList[location - 6] = Actions.move;
 
-        moveList[location - 1 - 1] = this.attackKey;
-        moveList[location + 1 + 1] = this.attackKey;
-        moveList[location - 6 * 2] = this.attackKey;
-        moveList[location + 6 * 2] = this.attackKey;
+        moveList[location + 1 + 1] = Actions.attack;
+        moveList[location - 1 - 1] = Actions.attack;
+        moveList[location + 6 * 2] = Actions.attack;
+        moveList[location - 6 * 2] = Actions.attack;
+        moveList[location + 6 - 1] = Actions.attack;
+        moveList[location + 6 + 1] = Actions.attack;
+        moveList[location - 6 - 1] = Actions.attack;
+        moveList[location - 6 + 1] = Actions.attack;
     }
 
     this.dragAnnouncedSource.next(moveList);

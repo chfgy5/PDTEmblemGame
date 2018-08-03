@@ -3,6 +3,7 @@ import { Subscription, Observable } from 'rxjs';
 
 import { Character } from '../character';
 import { MoveService } from '../move.service';
+import { Actions } from '../actions';
 
 @Component({
   selector: 'app-cell',
@@ -22,8 +23,8 @@ export class CellComponent implements OnInit {
 
   constructor(private moveService: MoveService) {
     moveService.dragAnnounced$.subscribe(
-      location => {
-        this.showValidMoves(location);
+      moveList => {
+        this.showValidMoves(moveList);
       }
     );
     moveService.dropAnnounced$.subscribe(
@@ -66,18 +67,11 @@ export class CellComponent implements OnInit {
     this.character.location = this.location;
   }
 
-  private showValidMoves(moveList: { [i: number]: string }) {
-    if (characterLocation === -1 && this.location >= 0 && this.location < 6) {
+  private showValidMoves(moveList: number[]) {
+    if (moveList[this.location] === Actions.move) {
       this.isValidMove = true;
-    } else if (this.terrain !== 1) {
-      if (this.location >= characterLocation - 1 && this.location <= characterLocation + 1
-          || this.location === characterLocation - 6 || this.location === characterLocation + 6) {
-        this.isValidMove = true;
-      }
-      if (this.location === characterLocation - 2 || this.location === characterLocation + 2
-          || this.location === characterLocation - 6 * 2 || this.location === characterLocation + 6 * 2) {
-        this.isValidAttack = true;
-      }
+    } else if (moveList[this.location] === Actions.attack) {
+      this.isValidAttack = true;
     }
   }
 

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { BoardComponent } from './board/board.component';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { CellComponent } from './cell/cell.component';
