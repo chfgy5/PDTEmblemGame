@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Character } from '../character';
-import { CellComponent } from '../cell/cell.component';
 
 @Component({
   selector: 'app-character',
