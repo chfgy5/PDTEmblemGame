@@ -1,6 +1,13 @@
-<div class="cell" [ngClass]="{'validMoveCell': isValidMove === true }" droppable [dropEnabled]="isValidMove" (onDrop)="onMove($event, this)">
-  <img src="../../assets/images/boulder.png" alt="boulder" *ngIf="terrain == 1; else grass">
-  <img src="../../assets/images/grass.png" alt="grass" #grass *ngIf="terrain == 2">
+<div class="cell"
+  droppable
+  [ngClass]="{'validMoveCell': isValidMove === true,
+              'validAttackCell': isValidAttack === true }"
+  (onDrop)="move($event, this)"
+  [ngSwitch]="terrain">
+  <!-- [dropEnabled]="isValidMove"> -->
 
-  <app-character (moving)="showValidMoves($event)" [character]="character"></app-character>
+  <img *ngSwitchCase="1" src="../../assets/images/boulder.png" alt="boulder" >
+  <img *ngSwitchCase="2" src="../../assets/images/grass.png" alt="grass">
+
+  <app-character *ngSwitchDefault (moving)="showValidMoves($event)" [character]="character"></app-character>
 </div>

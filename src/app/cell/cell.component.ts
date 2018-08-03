@@ -40,7 +40,7 @@ export class CellComponent implements OnInit {
   ngOnInit() {
   }
 
-  onMove(event, cell) {
+  move(event, cell) {
     const newCharacter = event.dragData;
 
     // using id because object comparrison is being confusing.
@@ -66,18 +66,23 @@ export class CellComponent implements OnInit {
     this.character.location = this.location;
   }
 
-  private showValidMoves(characterLocation: number) {
+  private showValidMoves(moveList: { [i: number]: string }) {
     if (characterLocation === -1 && this.location >= 0 && this.location < 6) {
       this.isValidMove = true;
     } else if (this.terrain !== 1) {
       if (this.location >= characterLocation - 1 && this.location <= characterLocation + 1
-                || this.location === characterLocation - 6 || this.location === characterLocation + 6) {
+          || this.location === characterLocation - 6 || this.location === characterLocation + 6) {
         this.isValidMove = true;
+      }
+      if (this.location === characterLocation - 2 || this.location === characterLocation + 2
+          || this.location === characterLocation - 6 * 2 || this.location === characterLocation + 6 * 2) {
+        this.isValidAttack = true;
       }
     }
   }
 
   private removeValidMoveClass()  {
     this.isValidMove = false;
+    this.isValidAttack = false;
   }
 }

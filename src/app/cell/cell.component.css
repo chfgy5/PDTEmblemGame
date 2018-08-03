@@ -20,3 +20,7 @@ img {
 .validMoveCell {
   border: 5px solid #50A050
 }
+
+.validAttackCell {
+  border: 5px solid #A05050
+}
