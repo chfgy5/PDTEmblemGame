@@ -1,4 +1,4 @@
-<div class="cell" droppable [dragHintClass]="validMoveCell" (onDrop)="onMove($event, this)">
+<div class="cell" [ngClass]="{'validMoveCell': isValidMove === true }" droppable [dropEnabled]="isValidMove" (onDrop)="onMove($event, this)">
   <img src="../../assets/images/boulder.png" alt="boulder" *ngIf="terrain == 1; else grass">
   <img src="../../assets/images/grass.png" alt="grass" #grass *ngIf="terrain == 2">
 

@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, ElementRef } from '@angular/core';
+import { Subscription, Observable } from 'rxjs';
 
 import { Character } from '../character';
+import { MoveService } from '../move.service';
 
 @Component({
   selector: 'app-cell',
@@ -11,10 +13,25 @@ export class CellComponent implements OnInit {
   @Input() terrain: number;
   @Input() location: number;
 
+  observeDrag: Observable<number>;
   character: Character;
   emptyCharacter: Character = { id: 0, img: 'empty.png', location: -1 };
+  isValidMove = false;
+  isValidAttack = false;
+  subscription: Subscription;
 
-  constructor() {
+  constructor(private moveService: MoveService) {
+    moveService.dragAnnounced$.subscribe(
+      location => {
+        this.showValidMoves(location);
+      }
+    );
+    moveService.dropAnnounced$.subscribe(
+      hi => {
+        this.removeValidMoveClass();
+      }
+    );
+
     if (this.character == null) {
       this.character = { id: 0, img: 'empty.png', location: this.location  };
     }
@@ -39,11 +56,6 @@ export class CellComponent implements OnInit {
     }
   }
 
-  public showValidMoves(characterLocation: number) {
-    console.log('showing valid moves');
-    console.log('CharacterLocation: ' + characterLocation + '\nCellLocation: ' + this.location);
-  }
-
   swapWithLocalCharacter(foreignCharacter) {
     this.character.id = foreignCharacter.id;
     this.character.img = foreignCharacter.img;
@@ -52,5 +64,20 @@ export class CellComponent implements OnInit {
     foreignCharacter.img = this.emptyCharacter.img;
 
     this.character.location = this.location;
+  }
+
+  private showValidMoves(characterLocation: number) {
+    if (characterLocation === -1 && this.location >= 0 && this.location < 6) {
+      this.isValidMove = true;
+    } else if (this.terrain !== 1) {
+      if (this.location >= characterLocation - 1 && this.location <= characterLocation + 1
+                || this.location === characterLocation - 6 || this.location === characterLocation + 6) {
+        this.isValidMove = true;
+      }
+    }
+  }
+
+  private removeValidMoveClass()  {
+    this.isValidMove = false;
   }
 }

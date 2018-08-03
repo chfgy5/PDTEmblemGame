@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Character } from '../character';
+import { MoveService } from '../move.service';
 
 @Component({
   selector: 'app-character',
@@ -11,12 +12,18 @@ export class CharacterComponent implements OnInit {
   @Input() character: Character;
   @Output() moving = new EventEmitter();
 
-  constructor() {  }
+  constructor(private moveService: MoveService) {
+  }
 
   ngOnInit() {
   }
 
   callValidMoves() {
-    this.moving.emit(this.character.location);
+    this.moveService.sendLocation(this.character.location);
+  }
+
+  removeValidMoves() {
+    console.log('Calling move service');
+    this.moveService.removeValidMoves();
   }
 }

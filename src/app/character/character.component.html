@@ -1,4 +1,7 @@
-<img src="../../assets/images/{{character.img}}" alt="Person.png" draggable (onDragStart)="callValidMoves()" [dragData]="character">
+<img src="../../assets/images/{{character.img}}" alt="Person.png" draggable
+  (onDragStart)="callValidMoves()"
+  (onDragEnd)="removeValidMoves()"
+  [dragData]="character">
 <ng-template #empty>
     <img src="../../assets/images/{{emptyCharacter.img}}" alt="Person.png">
 </ng-template>
