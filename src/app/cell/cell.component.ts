@@ -16,7 +16,7 @@ export class CellComponent implements OnInit {
 
   observeDrag: Observable<number>;
   character: Character;
-  emptyCharacter: Character = { id: 0, img: 'empty.png', location: -1 };
+  emptyCharacter: Character = { id: 0, img: 'empty.png', location: -1, team: 0, movement: 0 };
   isValidMove = false;
   isValidAttack = false;
   subscription: Subscription;
@@ -34,7 +34,7 @@ export class CellComponent implements OnInit {
     );
 
     if (this.character == null) {
-      this.character = { id: 0, img: 'empty.png', location: this.location  };
+      this.character = JSON.parse(JSON.stringify(this.emptyCharacter));
     }
   }
 
@@ -60,9 +60,13 @@ export class CellComponent implements OnInit {
   swapWithLocalCharacter(foreignCharacter) {
     this.character.id = foreignCharacter.id;
     this.character.img = foreignCharacter.img;
+    this.character.movement = foreignCharacter.movement;
+    this.character.team = foreignCharacter.team;
 
     foreignCharacter.id = this.emptyCharacter.id;
     foreignCharacter.img = this.emptyCharacter.img;
+    foreignCharacter.movement = this.emptyCharacter.movement;
+    foreignCharacter.team = this.emptyCharacter.team;
 
     this.character.location = this.location;
   }

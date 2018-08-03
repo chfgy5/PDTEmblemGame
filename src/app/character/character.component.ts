@@ -19,11 +19,10 @@ export class CharacterComponent implements OnInit {
   }
 
   callValidMoves() {
-    this.moveService.sendLocation(this.character.location);
+    this.moveService.sendValidMoves(this.character);
   }
 
   removeValidMoves() {
-    console.log('Calling move service');
     this.moveService.removeValidMoves();
   }
 }

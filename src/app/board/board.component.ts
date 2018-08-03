@@ -10,8 +10,13 @@ import { Character } from '../character';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-  characterTeam1: Character[] = [ { id: 3, img: 'mighty.png', location: -1  }, { id: 1, img: 'person.png', location: -1  } ];
-  characterTeam2: Character[] = [ { id: 2, img: 'MrBravo.webp', location: -1  } ];
+  characterTeam1: Character[] = [
+    { id: 3, img: 'mighty.png', location: -1, team: 1, movement: 2 },
+    { id: 1, img: 'person.png', location: -1, team: 1, movement: 1 }
+  ];
+  characterTeam2: Character[] = [
+    { id: 2, img: 'MrBravo.webp', location: -1, team: 2, movement: 1 }
+  ];
   CurrentBoard: number[];
   startingTeam: number;
 
@@ -25,9 +30,4 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  showStartingLocations(startingTeam: number) {
-    console.log('showing starting locations');
-  }
-
 }
