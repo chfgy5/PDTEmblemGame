@@ -33,6 +33,7 @@ export class MoveService {
         moveList[character.location - i - 1] = Actions.attack;
         moveList[character.location + 6 * i + 1] = Actions.attack;
         moveList[character.location - 6 * i - 1] = Actions.attack;
+
         for (let j = 1; j <= character.movement - i; j++) {
           moveList[character.location + 6 * i + j] = Actions.move;
           moveList[character.location + 6 * i - j] = Actions.move;

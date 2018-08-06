@@ -21,6 +21,10 @@ export class CellComponent implements OnInit {
   isValidAttack = false;
   subscription: Subscription;
 
+  isDroppable = (dragData: any) => {
+    return this.isValidMove || this.isValidAttack;
+  }
+
   constructor(private moveService: MoveService) {
     moveService.dragAnnounced$.subscribe(
       moveList => {
