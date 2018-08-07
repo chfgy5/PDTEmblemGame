@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { BOARDS } from '../boards';
-import { Character } from '../character';
+import { Character, mockCharacters } from '../character';
 
 @Component({
   selector: 'app-board',
@@ -11,11 +11,14 @@ import { Character } from '../character';
 })
 export class BoardComponent implements OnInit {
   characterTeam1: Character[] = [
-    { id: 3, img: 'mighty.png', location: -1, team: 1, movement: 2 },
-    { id: 1, img: 'person.png', location: -1, team: 1, movement: 1 }
+    JSON.parse(JSON.stringify(mockCharacters[Math.floor(Math.random() * (mockCharacters.length - 1)) + 1])),
+    JSON.parse(JSON.stringify(mockCharacters[Math.floor(Math.random() * (mockCharacters.length - 1)) + 1])),
+    JSON.parse(JSON.stringify(mockCharacters[Math.floor(Math.random() * (mockCharacters.length - 1)) + 1]))
   ];
   characterTeam2: Character[] = [
-    { id: 2, img: 'MrBravo.webp', location: -1, team: 2, movement: 1 }
+    JSON.parse(JSON.stringify(mockCharacters[Math.floor(Math.random() * (mockCharacters.length - 1)) + 1])),
+    JSON.parse(JSON.stringify(mockCharacters[Math.floor(Math.random() * (mockCharacters.length - 1)) + 1])),
+    JSON.parse(JSON.stringify(mockCharacters[Math.floor(Math.random() * (mockCharacters.length - 1)) + 1]))
   ];
   CurrentBoard: number[];
   startingTeam: number;
@@ -26,6 +29,12 @@ export class BoardComponent implements OnInit {
   ) {
     const randomBoard = Math.floor(Math.random() * BOARDS.length);
     this.CurrentBoard = BOARDS[0];
+    this.characterTeam1.forEach( (value) => {
+      value.team = 1;
+    });
+    this.characterTeam2.forEach( (value) => {
+      value.team = 2;
+    });
   }
 
   ngOnInit() {

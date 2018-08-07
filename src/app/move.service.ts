@@ -19,11 +19,18 @@ export class MoveService {
     const moveList: number[] = [];
 
     if (character.location === -1) {
-      for (let i = 0; i < 6; i++) {
-        moveList[i] = Actions.move;
+      if (character.team === 1) {
+        for (let i = 0; i < 6; i++) {
+          moveList[i] = Actions.move;
+        }
+      } else {
+        for (let i = 0; i < 6; i++) {
+          moveList[29 - i] = Actions.move;
+        }
       }
     } else {
-      for (let i = 0; i <= character.movement; i++) {
+      let i;
+      for (i = 0; i <= character.movement; i++) {
         moveList[character.location + i] = Actions.move;
         moveList[character.location - i] = Actions.move;
         moveList[character.location + 6 * i] = Actions.move;
@@ -34,7 +41,7 @@ export class MoveService {
         moveList[character.location + 6 * i + 1] = Actions.attack;
         moveList[character.location - 6 * i - 1] = Actions.attack;
 
-        for (let j = 1; j <= character.movement - i; j++) {
+        for (let j = 0; j <= character.movement - i; j++) {
           moveList[character.location + 6 * i + j] = Actions.move;
           moveList[character.location + 6 * i - j] = Actions.move;
           moveList[character.location - 6 * i + j] = Actions.move;
@@ -46,6 +53,9 @@ export class MoveService {
           moveList[character.location - 6 * i - j - 1] = Actions.attack;
         }
       }
+
+      moveList[character.location + 6 * i] = Actions.attack;
+      moveList[character.location - 6 * i] = Actions.attack;
     }
 
     this.dragAnnouncedSource.next(moveList);

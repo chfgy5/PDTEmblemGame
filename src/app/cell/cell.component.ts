@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, HostBinding, ElementRef } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 
-import { Character } from '../character';
+import { Character, mockCharacters } from '../character';
 import { MoveService } from '../move.service';
 import { Actions } from '../actions';
 
@@ -16,7 +16,7 @@ export class CellComponent implements OnInit {
 
   observeDrag: Observable<number>;
   character: Character;
-  emptyCharacter: Character = { id: 0, img: 'empty.png', location: -1, team: 0, movement: 0 };
+  emptyCharacter: Character = mockCharacters[0];
   isValidMove = false;
   isValidAttack = false;
   subscription: Subscription;
@@ -52,26 +52,20 @@ export class CellComponent implements OnInit {
     // TODO: fix after database added.
     if (this.character !== newCharacter) {
       if (this.character.id !== this.emptyCharacter.id) {
-        if (this.character.id > newCharacter.id) {
+        debugger;
+        if (this.character.attack > newCharacter.attack) {
           this.swapWithLocalCharacter(newCharacter);
         }
-      } else if (cell.terrain !== 1) {
+      } else if (cell.terrain !== 1 && cell.isValidMove) {
         this.swapWithLocalCharacter(newCharacter);
       }
     }
   }
 
   swapWithLocalCharacter(foreignCharacter) {
-    this.character.id = foreignCharacter.id;
-    this.character.img = foreignCharacter.img;
-    this.character.movement = foreignCharacter.movement;
-    this.character.team = foreignCharacter.team;
-
-    foreignCharacter.id = this.emptyCharacter.id;
-    foreignCharacter.img = this.emptyCharacter.img;
-    foreignCharacter.movement = this.emptyCharacter.movement;
-    foreignCharacter.team = this.emptyCharacter.team;
-
+    this.character = JSON.parse(JSON.stringify(foreignCharacter));
+    foreignCharacter.img = 'empty.png';
+    foreignCharacter = JSON.parse(JSON.stringify(this.emptyCharacter));
     this.character.location = this.location;
   }
 
