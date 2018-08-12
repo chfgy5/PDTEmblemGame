@@ -23,7 +23,7 @@ export class MoveService {
         for (let i = 0; i < 6; i++) {
           moveList[i] = Actions.move;
         }
-      } else {
+      } else if(character.team === 2){
         for (let i = 0; i < 6; i++) {
           moveList[29 - i] = Actions.move;
         }

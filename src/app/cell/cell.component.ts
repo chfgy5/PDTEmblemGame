@@ -47,12 +47,11 @@ export class CellComponent implements OnInit {
 
   move(event, cell) {
     const newCharacter = event.dragData;
-
+    debugger;
     // using id because object comparrison is being confusing.
     // TODO: fix after database added.
     if (this.character !== newCharacter) {
       if (this.character.id !== this.emptyCharacter.id) {
-        debugger;
         if (this.character.attack > newCharacter.attack) {
           this.swapWithLocalCharacter(newCharacter);
         }
@@ -64,8 +63,16 @@ export class CellComponent implements OnInit {
 
   swapWithLocalCharacter(foreignCharacter) {
     this.character = JSON.parse(JSON.stringify(foreignCharacter));
-    foreignCharacter.img = 'empty.png';
-    foreignCharacter = JSON.parse(JSON.stringify(this.emptyCharacter));
+    
+    foreignCharacter.id = this.emptyCharacter.id;
+    foreignCharacter.img = this.emptyCharacter.img;
+    foreignCharacter.attack = this.emptyCharacter.attack;
+    foreignCharacter.defense = this.emptyCharacter.defense;
+    foreignCharacter.team = this.emptyCharacter.team;
+    foreignCharacter.health = this.emptyCharacter.health;
+    foreignCharacter.movement = this.emptyCharacter.movement;
+    foreignCharacter.location = this.emptyCharacter.location;
+
     this.character.location = this.location;
   }
 
