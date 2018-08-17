@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, HostBinding, ElementRef } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 
-import { Character, mockCharacters } from '../../models/character';
+import { Character, mockCharacters } from '../../Models/character';
 import { MoveService } from '../move.service';
-import { Actions } from '../../models/actions';
+import { Actions } from '../../Models/actions';
 
 @Component({
   selector: 'app-cell',

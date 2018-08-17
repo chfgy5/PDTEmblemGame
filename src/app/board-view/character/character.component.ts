@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Character } from '../../models/character';
+import { Character } from '../../Models/character';
 import { MoveService } from '../move.service';
 
 @Component({

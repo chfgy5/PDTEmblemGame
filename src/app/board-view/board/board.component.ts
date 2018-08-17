@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { BOARDS } from '../../models/boards';
-import { Character, mockCharacters } from '../../models/character';
+import { Character, mockCharacters } from '../../Models/character';
+import { BoardService } from '../board.service';
 
 @Component({
   selector: 'app-board',
@@ -25,18 +25,18 @@ export class BoardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
-  ) {
-    const randomBoard = Math.floor(Math.random() * BOARDS.length);
-    this.CurrentBoard = BOARDS[0];
+    private router: Router,
+    private boardService: BoardService
+  ) { }
+
+  async ngOnInit() {
+    // const randomBoard = Math.floor(Math.random() * BOARDS.length);
+    this.CurrentBoard = await this.boardService.GetBoardById(0);
     this.characterTeam1.forEach( (value) => {
       value.team = 1;
     });
     this.characterTeam2.forEach( (value) => {
       value.team = 2;
     });
-  }
-
-  ngOnInit() {
   }
 }
