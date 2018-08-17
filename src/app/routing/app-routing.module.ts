@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BoardComponent } from './board/board.component';
+import { BoardComponent } from '../board-view/board/board.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/board', pathMatch: 'full' },

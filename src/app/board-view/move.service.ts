@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { Actions } from './actions';
-import { Character } from './character';
+import { Actions } from '../Models/actions';
+import { Character } from '../Models/character';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class MoveService {
         for (let i = 0; i < 6; i++) {
           moveList[i] = Actions.move;
         }
-      } else if(character.team === 2){
+      } else if (character.team === 2) {
         for (let i = 0; i < 6; i++) {
           moveList[29 - i] = Actions.move;
         }

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, HostBinding, ElementRef } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 
-import { Character, mockCharacters } from '../character';
+import { Character, mockCharacters } from '../../models/character';
 import { MoveService } from '../move.service';
-import { Actions } from '../actions';
+import { Actions } from '../../models/actions';
 
 @Component({
   selector: 'app-cell',
@@ -63,7 +63,7 @@ export class CellComponent implements OnInit {
 
   swapWithLocalCharacter(foreignCharacter) {
     this.character = JSON.parse(JSON.stringify(foreignCharacter));
-    
+
     foreignCharacter.id = this.emptyCharacter.id;
     foreignCharacter.img = this.emptyCharacter.img;
     foreignCharacter.attack = this.emptyCharacter.attack;

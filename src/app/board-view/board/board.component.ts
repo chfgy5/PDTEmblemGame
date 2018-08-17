@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { BOARDS } from '../boards';
-import { Character, mockCharacters } from '../character';
+import { BOARDS } from '../../models/boards';
+import { Character, mockCharacters } from '../../models/character';
 
 @Component({
   selector: 'app-board',
