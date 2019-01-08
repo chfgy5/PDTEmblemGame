@@ -47,7 +47,6 @@ export class CellComponent implements OnInit {
 
   move(event, cell) {
     const newCharacter = event.dragData;
-    debugger;
     // using id because object comparrison is being confusing.
     // TODO: fix after database added.
     if (this.character !== newCharacter) {

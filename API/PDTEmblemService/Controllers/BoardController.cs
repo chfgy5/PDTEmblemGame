@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace PDTEmblemService.Controllers
 {
-    public class BoardApiController : ApiController
+    public class BoardController : ApiController
     {
         // GET api/<controller>
         public IEnumerable<string> Get()
@@ -23,7 +23,7 @@ namespace PDTEmblemService.Controllers
 
             HttpResponseMessage response;
             response = Request.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:4200");
             response.Content = new StringContent(JsonConvert.SerializeObject(board), System.Text.Encoding.UTF8, "application/json");
             return response;
         }

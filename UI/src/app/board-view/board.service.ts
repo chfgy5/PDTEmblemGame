@@ -8,7 +8,7 @@ import { ApiService } from '../api.service';
 })
 export class BoardService {
   private board: number[];
-  public serviceUrl = 'BoardApi';
+  public serviceUrl = 'Board';
 
   constructor(public api: ApiService) { }
 
