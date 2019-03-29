@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { Actions } from '../Models/actions';
-import { Character } from '../Models/character';
+import { Character } from '../models/character';
 import { ApiService } from '../api.service';
 
 @Injectable({

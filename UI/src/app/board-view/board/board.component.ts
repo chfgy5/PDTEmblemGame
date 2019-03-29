@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Character, mockCharacters } from '../../Models/character';
+import { Character, mockCharacters } from '../../models/character';
 import { BoardService } from '../board.service';
 
 @Component({

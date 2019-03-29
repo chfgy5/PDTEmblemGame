@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, HostBinding, ElementRef } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 
-import { Character, mockCharacters } from '../../Models/character';
+import { Character, mockCharacters } from '../../models/character';
+import { Actions } from '../../models/actions';
 import { MoveService } from '../move.service';
-import { Actions } from '../../Models/actions';
 
 @Component({
   selector: 'app-cell',
@@ -75,7 +75,7 @@ export class CellComponent implements OnInit {
     this.character.location = this.location;
   }
 
-  private showValidMoves(moveList: number[]) {
+  showValidMoves(moveList: number[]) {
     if (moveList[this.location] === Actions.move) {
       this.isValidMove = true;
     } else if (moveList[this.location] === Actions.attack) {
